@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <aoc/util.h>
+#include <aoc/input.h>
 
 #define INSTRUCTIONS "md"
 
@@ -12,15 +12,10 @@
 
 #define DONT "don't"
 
-/**
- * \brief      Multipliies if the instruction is correct.
- *
- * \param[in]   str     The instruction
- * \param       result  The result
- *
- * \return     The next instruction.
+/*
+ * Multiply if the instruction is correct
  */
-char *mul(char *str, long *const result)
+static char *mul(char *str, long *const result)
 {
         long a, b;
         char *c;
@@ -42,15 +37,8 @@ char *mul(char *str, long *const result)
         return str;
 }
 
-/**
- * \brief      "Do or do not. There is no try." - Yoda.
- *
- * \see        'Star Wars Episode V: The Empire Strikes Back'
- *
- * \param[in]  str       The instruction
- * \param      multiply  The multiply boolean
- *
- * \return     The next instruction.
+/*
+ * "Do or do not. There is no try." - Yoda
  */
 char *yoda(char *str, int *const multiply)
 {
@@ -63,13 +51,8 @@ char *yoda(char *str, int *const multiply)
         return str + 1;
 }
 
-/**
- * \brief      Main function.
- *
- * \param[in]  argc  The count of arguments
- * \param[in]  argv  The arguments array
- *
- * \return     Exit status.
+/*
+ * Main function
  */
 int main(const int argc, const char *const argv[])
 {

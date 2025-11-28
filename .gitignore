@@ -1,4 +1,4 @@
-# ---> Vim
+# Vim files
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
 *.un~
@@ -6,42 +6,12 @@ Session.vim
 .netrwhist
 *~
 
-# ---> C
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# Zed config files
+.zed
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-#*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-
-# ---> Directories
-build
+# Clangd index
+.clangd
+.cache
 
 # Input files
 *.input

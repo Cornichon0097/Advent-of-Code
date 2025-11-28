@@ -1,15 +1,10 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-#include <aoc/util.h>
+#include <aoc/input.h>
 
-/**
- * \brief      Determines the input stream.
- *
- * \param[in]  argc  The count of arguments
- * \param[in]  argv  The arguments array
- *
- * \return     The input stream.
+/*
+ * Open input stream
  */
 FILE *input_stream(const int argc, const char *const argv[])
 {
@@ -21,7 +16,8 @@ FILE *input_stream(const int argc, const char *const argv[])
         input = fopen(argv[1], "r");
 
         if (input == NULL) {
-                perror("Input stream");
+                fprintf(stderr, "Failed to open %s", argv[1]);
+                perror("fopen()");
                 fprintf(stderr, "Usage: %s [input]\n", argv[0]);
                 exit(EXIT_FAILURE);
         }
@@ -29,14 +25,10 @@ FILE *input_stream(const int argc, const char *const argv[])
         return input;
 }
 
-/**
- * \brief      Counts number of lines.
- *
- * \param      stream  The stream
- *
- * \return     The number of lines of stream.
+/*
+ * Return input stream number of lines
  */
-int lines_count(FILE *const stream)
+int input_nl(FILE *const stream)
 {
         long offset = ftell(stream);
         int count = 0;
@@ -54,14 +46,10 @@ int lines_count(FILE *const stream)
         return count;
 }
 
-/**
- * \brief      Return lines size.
- *
- * \param      stream  The stream
- *
- * \return     The lines size of stream.
+/*
+ * Return input stream line size
  */
-int lines_size(FILE *const stream)
+int input_len(FILE *const stream)
 {
         long offset = ftell(stream);
         int size = 0;

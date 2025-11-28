@@ -2,18 +2,14 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <aoc/util.h>
+#include <aoc/input.h>
 
 #define OPPOSITE_SIGNS(a, b) (((a) ^ (b)) >> 31)
 
-/**
- * \brief      Determines whether the specified report is safe.
- *
- * \param[in]  report  The report
- *
- * \return     True if the specified report is safe, False otherwise.
+/*
+ * Determine whether the specified report is safe
  */
-int is_safe(const char *const report)
+static int is_safe(const char *const report)
 {
         char *token;
         int val, prev;
@@ -42,14 +38,10 @@ int is_safe(const char *const report)
         return 1;
 }
 
-/**
- * \brief      Removes the next element pointed to by token in a report.
- *
- * \param      token  The report token
- *
- * \return     The next token.
+/*
+ * Remove the next element pointed to by token in a report
  */
-char *remove_next(char *token)
+static char *remove_next(char *token)
 {
         for (; *token == ' '; ++token)
                 ;
@@ -60,18 +52,10 @@ char *remove_next(char *token)
         return token;
 }
 
-/**
- * \brief      Determines whether the specified report is safe.
- *
- * The function dampaner() determines whether the specified report is safe,
- * accordirng to the Dampaner Problem. If removing a single level from an unsafe
- * report would make it safe, the report instead counts as safe.
- *
- * \param[in]  report  The report
- *
- * \return     True if the specified report is safe, False otherwise.
+/*
+ * Determine whether the specified report is safe
  */
-int dampaner(const char *const report)
+static int dampaner(const char *const report)
 {
         char buf[BUFSIZ];
         char *token;
@@ -90,13 +74,8 @@ int dampaner(const char *const report)
         return 0;
 }
 
-/**
- * \brief      Main function.
- *
- * \param[in]  argc  The count of arguments
- * \param[in]  argv  The arguments array
- *
- * \return     Exit status.
+/*
+ * Main function
  */
 int main(const int argc, const char *const argv[])
 {

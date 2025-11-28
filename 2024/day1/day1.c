@@ -1,22 +1,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <aoc/util.h>
+#include <aoc/input.h>
 
-/**
- * \brief      Parses input stream.
- *
- * \param      stream  The input stream
- * \param      left    The left list
- * \param      right   The right list
- *
- * \return     The size of left and right lists.
+/*
+ * Parse input stream
  */
-int parse(FILE *const stream, int **const left, int **const right)
+static int parse(FILE *const stream, int **const left, int **const right)
 {
         char buf[BUFSIZ];
         int *l, *r;
-        int size = lines_count(stream);
+        int size = input_nl(stream);
 
         *left  = (int *) malloc(size * sizeof(int));
         *right = (int *) malloc(size * sizeof(int));
@@ -30,29 +24,18 @@ int parse(FILE *const stream, int **const left, int **const right)
         return size;
 }
 
-/**
- * \brief      Compares two integers.
- *
- * \param[in]  a     The first integer
- * \param[in]  b     The second integer
- *
- * \return     The distance between left and right lists.
+/*
+ * Compare two integers
  */
-int compare(const void *const a, const void *const b)
+static int compare(const void *const a, const void *const b)
 {
         return (*(int *) a - *(int *) b);
 }
 
-/**
- * \brief      Computes distance between two lists.
- *
- * \param      left   The left list
- * \param      right  The right list
- * \param[in]  size   The size of both lists
- *
- * \return     The distance between left and right lists.
+/*
+ * Compute the distance between two lists
  */
-int distance(int *const left, int *const right, const int size)
+static int distance(int *const left, int *const right, const int size)
 {
         int distance = 0;
         int i;
@@ -66,16 +49,10 @@ int distance(int *const left, int *const right, const int size)
         return distance;
 }
 
-/**
- * \brief      Computes similarity score between two lists.
- *
- * \param      left   The left list
- * \param      right  The right list
- * \param[in]  size   The size of both lists
- *
- * \return     The similarity score between left and right lists.
+/*
+ * Compute the similarity score between two lists
  */
-int sim_score(int *const left, int *const right, const int size)
+static int sim_score(int *const left, int *const right, const int size)
 {
         int score = 0;
         int val, l, r;
@@ -102,13 +79,8 @@ int sim_score(int *const left, int *const right, const int size)
         return score;
 }
 
-/**
- * \brief      Main function.
- *
- * \param[in]  argc  The count of arguments
- * \param[in]  argv  The arguments array
- *
- * \return     The exit status.
+/*
+ * Main function
  */
 int main(const int argc, const char *const argv[])
 {

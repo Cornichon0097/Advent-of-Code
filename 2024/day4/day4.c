@@ -2,27 +2,17 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <aoc/util.h>
+#include <aoc/input.h>
 
 #define XMAS "XMAS"
 
 #define X_MAS "MS"
 
-/**
- * \brief      Determines if there is an XMAS.
- *
- * \param      grid    The grid
- * \param[in]  width   The width
- * \param[in]  height  The height
- * \param[in]  x       The x position
- * \param[in]  y       The y position
- * \param[in]  dx      The x delta
- * \param[in]  dy      The y delta
- *
- * \return     True if there is an XMAS at (x, y), in (dx, dy) direction.
+/*
+ * Determine if there is an XMAS at (x, y), in (dx, dy) direction
  */
-int xmas(char **const grid, const int width, const int height,
-         int x, int y, const int dx, const int dy)
+static int xmas(char **const grid, const int width, const int height,
+                int x, int y, const int dx, const int dy)
 {
         size_t i;
 
@@ -43,19 +33,11 @@ int xmas(char **const grid, const int width, const int height,
         return 1;
 }
 
-/**
- * \brief      Counts XMAS
- *
- * \param      grid    The grid
- * \param[in]  width   The width
- * \param[in]  height  The height
- * \param[in]  x       The x position
- * \param[in]  y       The y position
- *
- * \return     The number of XMAS in grid at (x, y).
+/*
+ * Count XMAS
  */
-int count(char **const grid, const int width, const int height,
-          const int x, const int y)
+static int count(char **const grid, const int width, const int height,
+                 const int x, const int y)
 {
         return xmas(grid, width, height, x, y, 0, 1)
                + xmas(grid, width, height, x, y, 1, 0)
@@ -68,18 +50,10 @@ int count(char **const grid, const int width, const int height,
 }
 
 /**
- * \brief      Determines if there is an X-MAS
- *
- * \param      grid    The grid
- * \param[in]  width   The width
- * \param[in]  height  The height
- * \param[in]  x       The x position
- * \param[in]  y       The y position
- *
- * \return     True if there is an X-MAS at (x, y), False otherwise.
+ * Determine if there is an X-MAS
  */
-int x_mas(char **const grid, const int width, const int height,
-          const int x, const int y)
+static int x_mas(char **const grid, const int width, const int height,
+                 const int x, const int y)
 {
         if ((x - 1) < 0)
                 return 0;
@@ -128,13 +102,8 @@ int x_mas(char **const grid, const int width, const int height,
         return 1;
 }
 
-/**
- * \brief      Main function.
- *
- * \param[in]  argc  The count of arguments
- * \param[in]  argv  The arguments array
- *
- * \return     Exit status.
+/*
+ * Main function
  */
 int main(const int argc, const char *const argv[])
 {
@@ -145,8 +114,8 @@ int main(const int argc, const char *const argv[])
         int i, j;
 
         input  = input_stream(argc, argv);
-        height = lines_count(input);
-        width  = lines_size(input);
+        height = input_nl(input);
+        width  = input_len(input);
 
         grid = (char **) malloc(height * sizeof(char *));
 
